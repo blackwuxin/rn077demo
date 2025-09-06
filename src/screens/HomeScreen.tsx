@@ -35,6 +35,12 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('Details', {itemId: 42, title: '示例详情'})}>
           <Text style={styles.buttonText}>查看详情页面</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={[styles.button, styles.specialButton]}
+          onPress={() => navigation.navigate('InlineRequire')}>
+          <Text style={styles.buttonText}>Inline Require 示例</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -77,6 +83,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
+  },
+  specialButton: {
+    backgroundColor: '#FF6B35',
   },
 });
 

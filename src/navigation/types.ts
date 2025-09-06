@@ -6,6 +6,7 @@ export type RootStackParamList = {
     itemId: number;
     title: string;
   };
+  InlineRequire: undefined;
 };
 
 declare global {

@@ -30,14 +30,20 @@ const DetailsScreen = createLazyScreen(
   'DetailsScreen'
 );
 
+const InlineRequireScreen = createLazyScreen(
+  () => import('../utils/InlineRequireExample'),
+  '加载 Inline Require 示例...',
+  'InlineRequireScreen'
+);
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
   // 预加载常用页面
   useEffect(() => {
     // 在应用启动后预加载Profile和Settings页面
-    preloadScreen(() => import('../screens/ProfileScreen'));
-    preloadScreen(() => import('../screens/SettingsScreen'));
+    // preloadScreen(() => import('../screens/ProfileScreen'));
+    // preloadScreen(() => import('../screens/SettingsScreen'));
   }, []);
 
   return (
@@ -83,6 +89,13 @@ const AppNavigator: React.FC = () => {
           options={({route}) => ({
             title: (route.params as any)?.title || '详情',
           })}
+        />
+        <Stack.Screen
+          name="InlineRequire"
+          component={InlineRequireScreen}
+          options={{
+            title: 'Inline Require 示例',
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
