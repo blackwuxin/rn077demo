@@ -7,6 +7,7 @@ export type RootStackParamList = {
     title: string;
   };
   InlineRequire: undefined;
+  GetterAPI: undefined;
 };
 
 declare global {

@@ -36,6 +36,12 @@ const InlineRequireScreen = createLazyScreen(
   'InlineRequireScreen'
 );
 
+const GetterAPIScreen = createLazyScreen(
+  () => import('../utils/GetterAPIExample'),
+  '加载 Getter API 示例...',
+  'GetterAPIScreen'
+);
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
@@ -95,6 +101,13 @@ const AppNavigator: React.FC = () => {
           component={InlineRequireScreen}
           options={{
             title: 'Inline Require 示例',
+          }}
+        />
+        <Stack.Screen
+          name="GetterAPI"
+          component={GetterAPIScreen}
+          options={{
+            title: 'Getter API 示例',
           }}
         />
       </Stack.Navigator>

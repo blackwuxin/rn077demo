@@ -41,6 +41,12 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('InlineRequire')}>
           <Text style={styles.buttonText}>Inline Require 示例</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={[styles.button, styles.getterButton]}
+          onPress={() => navigation.navigate('GetterAPI')}>
+          <Text style={styles.buttonText}>Getter API 示例</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -86,6 +92,9 @@ const styles = StyleSheet.create({
   },
   specialButton: {
     backgroundColor: '#FF6B35',
+  },
+  getterButton: {
+    backgroundColor: '#34C759',
   },
 });
 
