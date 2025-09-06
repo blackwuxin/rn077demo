@@ -16,7 +16,7 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>欢迎来到首页</Text>
-        <Text style={styles.subtitle}>这是一个React Native路由示例</Text>
+        <Text style={styles.subtitle}>这是一个React Native示例</Text>
         
         <TouchableOpacity
           style={styles.button}
@@ -53,11 +53,10 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('JSError')}>
           <Text style={styles.buttonText}>JSError 异常捕获</Text>
         </TouchableOpacity>
-        
         <TouchableOpacity
-          style={[styles.button, styles.flatListButton]}
-          onPress={() => navigation.navigate('FlatListExample')}>
-          <Text style={styles.buttonText}>FlatList 长列表优化</Text>
+          style={[styles.button, styles.complexButton]}
+          onPress={() => navigation.navigate('ComplexFlatListExample')}>
+          <Text style={styles.buttonText}>复杂列表性能优化对比</Text>
         </TouchableOpacity>
         
         <TouchableOpacity
@@ -65,6 +64,8 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('ListPerformanceComparison')}>
           <Text style={styles.buttonText}>FlatList vs FlashList 性能对比</Text>
         </TouchableOpacity>
+
+
       </View>
     </SafeAreaView>
   );
@@ -122,6 +123,9 @@ const styles = StyleSheet.create({
   },
   comparisonButton: {
     backgroundColor: '#9C27B0',
+  },
+  complexButton: {
+    backgroundColor: '#FF5722',
   },
 });
 

@@ -48,16 +48,16 @@ const JSErrorScreen = createLazyScreen(
   'JSErrorScreen'
 );
 
-const FlatListExampleScreen = createLazyScreen(
-  () => import('../utils/FlatListExample'),
-  '加载 FlatList 示例...',
-  'FlatListExampleScreen'
-);
 
 const ListPerformanceComparisonScreen = createLazyScreen(
   () => import('../utils/ListPerformanceComparison'),
   '加载性能对比示例...',
   'ListPerformanceComparisonScreen'
+);
+const ComplexFlatListExampleScreen = createLazyScreen(
+  () => import('../utils/ComplexFlatListExample'),
+  '加载复杂列表性能优化示例...',
+  'ComplexFlatListExampleScreen'
 );
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -136,17 +136,17 @@ const AppNavigator: React.FC = () => {
           }}
         />
         <Stack.Screen
-          name="FlatListExample"
-          component={FlatListExampleScreen}
-          options={{
-            title: 'FlatList 长列表优化',
-          }}
-        />
-        <Stack.Screen
           name="ListPerformanceComparison"
           component={ListPerformanceComparisonScreen}
           options={{
             title: 'FlatList vs FlashList 性能对比',
+          }}
+        />
+        <Stack.Screen
+          name="ComplexFlatListExample"
+          component={ComplexFlatListExampleScreen}
+          options={{
+            title: '复杂列表性能优化对比',
           }}
         />
       </Stack.Navigator>

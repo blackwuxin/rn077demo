@@ -15,6 +15,17 @@ export interface ListItem {
     likes: number;
     comments: number;
   };
+  // 新增复杂数据字段
+  images?: string[];
+  author?: {
+    name: string;
+    avatar: string;
+    verified: boolean;
+  };
+  rating?: number;
+  readTime?: number;
+  isBookmarked?: boolean;
+  isLiked?: boolean;
 }
 
 export class DataGenerator {
@@ -91,7 +102,14 @@ export class DataGenerator {
         views: Math.floor(Math.random() * 10000) + 100,
         likes: Math.floor(Math.random() * 1000) + 10,
         comments: Math.floor(Math.random() * 100) + 1
-      }
+      },
+      // 新增复杂数据
+      images: this.generateImages(index),
+      author: this.generateAuthor(index),
+      rating: Math.round((Math.random() * 4 + 1) * 10) / 10, // 1.0-5.0
+      readTime: Math.floor(Math.random() * 15) + 1, // 1-15分钟
+      isBookmarked: Math.random() > 0.7,
+      isLiked: Math.random() > 0.6,
     };
   }
 
@@ -120,6 +138,41 @@ export class DataGenerator {
     // 随机选择一个服务，但偏向于使用可靠的服务
     const serviceIndex = index % 4;
     return avatarServices[serviceIndex];
+  }
+
+  // 生成多张图片
+  private generateImages(index: number): string[] {
+    const imageCount = Math.floor(Math.random() * 4) + 1; // 1-4张图片
+    const images: string[] = [];
+    
+    for (let i = 0; i < imageCount; i++) {
+      const imageServices = [
+        `https://picsum.photos/300/200?random=${index + i}`,
+        `https://source.unsplash.com/300x200/?nature,technology&sig=${index + i}`,
+        `https://via.placeholder.com/300x200/4CAF50/ffffff?text=Image${i + 1}`,
+        `https://dummyimage.com/300x200/2196F3/ffffff&text=Photo${i + 1}`,
+      ];
+      const serviceIndex = (index + i) % imageServices.length;
+      images.push(imageServices[serviceIndex]);
+    }
+    
+    return images;
+  }
+
+  // 生成作者信息
+  private generateAuthor(index: number): { name: string; avatar: string; verified: boolean } {
+    const names = [
+      '张三', '李四', '王五', '赵六', '钱七', '孙八', '周九', '吴十',
+      '陈一', '刘二', '杨三', '黄四', '朱五', '林六', '徐七', '马八'
+    ];
+    
+    const nameIndex = index % names.length;
+    
+    return {
+      name: names[nameIndex],
+      avatar: this.generateAvatar(index + 1000), // 使用不同的种子
+      verified: Math.random() > 0.6, // 40%的概率是认证用户
+    };
   }
 
   // 随机选择标签
