@@ -49,10 +49,11 @@ const JSErrorScreen = createLazyScreen(
 );
 
 
-const ComplexFlatListExampleScreen = createLazyScreen(
-  () => import('../utils/ComplexFlatListExample'),
-  '加载复杂列表性能优化示例...',
-  'ComplexFlatListExampleScreen'
+
+const FlatListDemoScreen = createLazyScreen(
+  () => import('../utils/FlatListDemo'),
+  '加载 FlatList 性能优化示例...',
+  'FlatListDemoScreen'
 );
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -130,13 +131,13 @@ const AppNavigator: React.FC = () => {
             title: 'JSError 异常捕获',
           }}
         />
-        <Stack.Screen
-          name="ComplexFlatListExample"
-          component={ComplexFlatListExampleScreen}
-          options={{
-            title: '复杂列表性能优化对比',
-          }}
-        />
+          <Stack.Screen
+            name="FlatListDemo"
+            component={FlatListDemoScreen}
+            options={{
+              title: 'FlatList性能优化对比',
+            }}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );

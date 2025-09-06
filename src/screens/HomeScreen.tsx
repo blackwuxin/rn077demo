@@ -53,13 +53,12 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('JSError')}>
           <Text style={styles.buttonText}>JSError 异常捕获</Text>
         </TouchableOpacity>
+        
         <TouchableOpacity
           style={[styles.button, styles.complexButton]}
-          onPress={() => navigation.navigate('ComplexFlatListExample')}>
-          <Text style={styles.buttonText}>复杂列表性能优化对比</Text>
+          onPress={() => navigation.navigate('FlatListDemo')}>
+          <Text style={styles.buttonText}>FlatList性能优化对比</Text>
         </TouchableOpacity>
-        
-
 
 
       </View>

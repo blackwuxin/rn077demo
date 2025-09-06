@@ -11,7 +11,7 @@ export type RootStackParamList = {
   JSError: undefined;
   FlatListExample: undefined;
   ListPerformanceComparison: undefined;
-  ComplexFlatListExample: undefined;
+  FlatListDemo: undefined;
 };
 
 declare global {
