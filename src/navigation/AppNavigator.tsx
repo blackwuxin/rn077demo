@@ -48,6 +48,18 @@ const JSErrorScreen = createLazyScreen(
   'JSErrorScreen'
 );
 
+const FlatListExampleScreen = createLazyScreen(
+  () => import('../utils/FlatListExample'),
+  '加载 FlatList 示例...',
+  'FlatListExampleScreen'
+);
+
+const ListPerformanceComparisonScreen = createLazyScreen(
+  () => import('../utils/ListPerformanceComparison'),
+  '加载性能对比示例...',
+  'ListPerformanceComparisonScreen'
+);
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
@@ -121,6 +133,20 @@ const AppNavigator: React.FC = () => {
           component={JSErrorScreen}
           options={{
             title: 'JSError 异常捕获',
+          }}
+        />
+        <Stack.Screen
+          name="FlatListExample"
+          component={FlatListExampleScreen}
+          options={{
+            title: 'FlatList 长列表优化',
+          }}
+        />
+        <Stack.Screen
+          name="ListPerformanceComparison"
+          component={ListPerformanceComparisonScreen}
+          options={{
+            title: 'FlatList vs FlashList 性能对比',
           }}
         />
       </Stack.Navigator>

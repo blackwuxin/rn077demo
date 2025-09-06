@@ -9,6 +9,8 @@ export type RootStackParamList = {
   InlineRequire: undefined;
   GetterAPI: undefined;
   JSError: undefined;
+  FlatListExample: undefined;
+  ListPerformanceComparison: undefined;
 };
 
 declare global {

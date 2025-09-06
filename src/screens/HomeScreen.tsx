@@ -53,6 +53,18 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('JSError')}>
           <Text style={styles.buttonText}>JSError 异常捕获</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={[styles.button, styles.flatListButton]}
+          onPress={() => navigation.navigate('FlatListExample')}>
+          <Text style={styles.buttonText}>FlatList 长列表优化</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={[styles.button, styles.comparisonButton]}
+          onPress={() => navigation.navigate('ListPerformanceComparison')}>
+          <Text style={styles.buttonText}>FlatList vs FlashList 性能对比</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -104,6 +116,12 @@ const styles = StyleSheet.create({
   },
   errorButton: {
     backgroundColor: '#d32f2f',
+  },
+  flatListButton: {
+    backgroundColor: '#1976d2',
+  },
+  comparisonButton: {
+    backgroundColor: '#9C27B0',
   },
 });
 
