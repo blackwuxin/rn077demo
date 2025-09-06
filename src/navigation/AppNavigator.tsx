@@ -42,6 +42,12 @@ const GetterAPIScreen = createLazyScreen(
   'GetterAPIScreen'
 );
 
+const JSErrorScreen = createLazyScreen(
+  () => import('../utils/JSErrorExample'),
+  '加载 JSError 示例...',
+  'JSErrorScreen'
+);
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
@@ -108,6 +114,13 @@ const AppNavigator: React.FC = () => {
           component={GetterAPIScreen}
           options={{
             title: 'Getter API 示例',
+          }}
+        />
+        <Stack.Screen
+          name="JSError"
+          component={JSErrorScreen}
+          options={{
+            title: 'JSError 异常捕获',
           }}
         />
       </Stack.Navigator>

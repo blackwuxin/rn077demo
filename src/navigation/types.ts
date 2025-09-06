@@ -8,6 +8,7 @@ export type RootStackParamList = {
   };
   InlineRequire: undefined;
   GetterAPI: undefined;
+  JSError: undefined;
 };
 
 declare global {

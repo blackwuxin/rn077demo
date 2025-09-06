@@ -47,6 +47,12 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('GetterAPI')}>
           <Text style={styles.buttonText}>Getter API 示例</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={[styles.button, styles.errorButton]}
+          onPress={() => navigation.navigate('JSError')}>
+          <Text style={styles.buttonText}>JSError 异常捕获</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -95,6 +101,9 @@ const styles = StyleSheet.create({
   },
   getterButton: {
     backgroundColor: '#34C759',
+  },
+  errorButton: {
+    backgroundColor: '#d32f2f',
   },
 });
 
