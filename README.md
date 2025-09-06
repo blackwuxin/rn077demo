@@ -1,3 +1,57 @@
+npx react-native bundle --entry-file index.js --platform ios --bundle-output out/index.ios.jsbundle.js --assets-dest out --dev false
+
+./node_modules/react-native/sdks/hermesc/osx-bin/hermesc --emit-binary -out out/index.ios.jsbundle.hbc  out/index.ios.jsbundle.js
+
+bsdiff out/index.ios.jsbundle1.js out/index.ios.jsbundle2.js out/bundle.patch
+bspatch out/index.ios.jsbundle1.js out/test_patched.js out/bundle.patch
+diff  out/test_patched.js out/index.ios.jsbundle2.js && echo "文件完全相同" || echo "文件存在差异"
+
+# React Native 路由示例应用
+
+这是一个使用 React Navigation 实现路由功能的 React Native 应用示例。
+
+## 🚀 功能特性
+
+- ✅ 多页面导航系统
+- ✅ 页面间参数传递
+- ✅ TypeScript 类型安全
+- ✅ 现代化 UI 设计
+- ✅ 堆栈导航器
+- ✅ 自定义页面标题
+- ✅ **智能懒加载系统**
+- ✅ **性能优化预加载**
+- ✅ **自定义加载体验**
+
+## 📱 页面结构
+
+### 主要页面
+- **首页 (HomeScreen)**: 应用的主入口，包含导航到其他页面的按钮
+- **个人资料 (ProfileScreen)**: 显示用户信息的页面
+- **设置 (SettingsScreen)**: 应用设置页面，包含开关控件
+- **详情 (DetailsScreen)**: 支持参数传递的详情页面
+
+### 导航功能
+- 页面间跳转
+- 返回上一页
+- 参数传递 (如: itemId, title)
+- 自定义页面标题
+
+### 性能优化
+- **懒加载**: 页面按需加载，提升启动速度
+- **智能预加载**: 常用页面在空闲时预加载
+- **内存优化**: 未使用页面不占用内存
+- **流畅体验**: 使用 InteractionManager 优化加载时机
+
+## 🛠 技术栈
+
+- **React Native**: 0.77.0
+- **React Navigation**: ^6.x
+- **TypeScript**: 类型安全的开发体验
+- **React Native Gesture Handler**: 手势处理
+- **React Native Screens**: 原生屏幕优化
+
+---
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started

@@ -1,0 +1,92 @@
+import React, {useEffect} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import type {RootStackParamList} from './types';
+import {createLazyScreen, preloadScreen} from './LazyLoader';
+
+
+// 创建懒加载页面组件
+const HomeScreen = createLazyScreen(
+  () => import('../screens/HomeScreen'),
+  '加载首页...',
+  'HomeScreen'
+);
+
+const ProfileScreen = createLazyScreen(
+  () => import('../screens/ProfileScreen'),
+  '加载个人资料...',
+  'ProfileScreen'
+);
+
+const SettingsScreen = createLazyScreen(
+  () => import('../screens/SettingsScreen'),
+  '加载设置页面...',
+  'SettingsScreen'
+);
+
+const DetailsScreen = createLazyScreen(
+  () => import('../screens/DetailsScreen'),
+  '加载详情页面...',
+  'DetailsScreen'
+);
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const AppNavigator: React.FC = () => {
+  // 预加载常用页面
+  useEffect(() => {
+    // 在应用启动后预加载Profile和Settings页面
+    preloadScreen(() => import('../screens/ProfileScreen'));
+    preloadScreen(() => import('../screens/SettingsScreen'));
+  }, []);
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#007AFF',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: '首页',
+            headerStyle: {
+              backgroundColor: '#007AFF',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            title: '个人资料',
+          }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{
+            title: '设置',
+          }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={({route}) => ({
+            title: (route.params as any)?.title || '详情',
+          })}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default AppNavigator;

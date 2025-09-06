@@ -21,10 +21,15 @@ class AppDelegate: RCTAppDelegate {
   }
 
   override func bundleURL() -> URL? {
-#if DEBUG
-    RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
-#else
-    Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-#endif
+    // Load the pre-built bundle from out/index.ios.jsbundle.js
+//    let bundlePath = "/rn077/out/index.ios.jsbundle.js"
+//    if FileManager.default.fileExists(atPath: bundlePath) {
+//      return URL(fileURLWithPath: bundlePath)
+//    }
+    #if DEBUG
+        return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
+    #else
+        return Bundle.main.url(forResource: "index.ios.jsbundle", withExtension: "hbc")
+    #endif
   }
 }
