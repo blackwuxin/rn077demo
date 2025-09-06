@@ -49,11 +49,6 @@ const JSErrorScreen = createLazyScreen(
 );
 
 
-const ListPerformanceComparisonScreen = createLazyScreen(
-  () => import('../utils/ListPerformanceComparison'),
-  '加载性能对比示例...',
-  'ListPerformanceComparisonScreen'
-);
 const ComplexFlatListExampleScreen = createLazyScreen(
   () => import('../utils/ComplexFlatListExample'),
   '加载复杂列表性能优化示例...',
@@ -133,13 +128,6 @@ const AppNavigator: React.FC = () => {
           component={JSErrorScreen}
           options={{
             title: 'JSError 异常捕获',
-          }}
-        />
-        <Stack.Screen
-          name="ListPerformanceComparison"
-          component={ListPerformanceComparisonScreen}
-          options={{
-            title: 'FlatList vs FlashList 性能对比',
           }}
         />
         <Stack.Screen

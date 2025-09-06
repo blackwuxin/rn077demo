@@ -59,11 +59,7 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           <Text style={styles.buttonText}>复杂列表性能优化对比</Text>
         </TouchableOpacity>
         
-        <TouchableOpacity
-          style={[styles.button, styles.comparisonButton]}
-          onPress={() => navigation.navigate('ListPerformanceComparison')}>
-          <Text style={styles.buttonText}>FlatList vs FlashList 性能对比</Text>
-        </TouchableOpacity>
+
 
 
       </View>
