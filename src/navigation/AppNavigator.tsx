@@ -56,6 +56,19 @@ const FlatListDemoScreen = createLazyScreen(
   'FlatListDemoScreen'
 );
 
+const SafeAreaDemoScreen = createLazyScreen(
+  () => import('../screens/SafeAreaDemo'),
+  '加载 SafeAreaContext 示例...',
+  'SafeAreaDemoScreen'
+);
+
+const DocumentPickerDemoScreen = createLazyScreen(
+  () => import('../screens/DocumentPickerDemo'),
+  '加载文档选择器示例...',
+  'DocumentPickerDemoScreen'
+);
+
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
@@ -136,6 +149,20 @@ const AppNavigator: React.FC = () => {
             component={FlatListDemoScreen}
             options={{
               title: 'FlatList性能优化对比',
+            }}
+          />
+          <Stack.Screen
+            name="SafeAreaDemo"
+            component={SafeAreaDemoScreen}
+            options={{
+              title: 'SafeAreaContext 示例',
+            }}
+          />
+          <Stack.Screen
+            name="DocumentPickerDemo"
+            component={DocumentPickerDemoScreen}
+            options={{
+              title: '文档选择器示例',
             }}
           />
       </Stack.Navigator>

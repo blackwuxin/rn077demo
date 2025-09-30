@@ -12,6 +12,8 @@ export type RootStackParamList = {
   FlatListExample: undefined;
   ListPerformanceComparison: undefined;
   FlatListDemo: undefined;
+  SafeAreaDemo: undefined;
+  DocumentPickerDemo: undefined;
 };
 
 declare global {

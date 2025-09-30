@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {RootStackParamList} from '../navigation/types';
@@ -14,9 +15,14 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 const HomeScreen: React.FC<Props> = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>欢迎来到首页</Text>
-        <Text style={styles.subtitle}>这是一个React Native示例</Text>
+      <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={true}
+        bounces={true}>
+        <View style={styles.content}>
+          <Text style={styles.title}>欢迎来到首页</Text>
+          <Text style={styles.subtitle}>这是一个React Native示例</Text>
         
         <TouchableOpacity
           style={styles.button}
@@ -59,9 +65,21 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
           onPress={() => navigation.navigate('FlatListDemo')}>
           <Text style={styles.buttonText}>FlatList性能优化对比</Text>
         </TouchableOpacity>
-
-
-      </View>
+        
+        <TouchableOpacity
+          style={[styles.button, styles.safeAreaButton]}
+          onPress={() => navigation.navigate('SafeAreaDemo')}>
+          <Text style={styles.buttonText}>SafeAreaContext 示例</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={[styles.button, styles.documentPickerButton]}
+          onPress={() => navigation.navigate('DocumentPickerDemo')}>
+          <Text style={styles.buttonText}>文档选择器示例</Text>
+        </TouchableOpacity>
+        
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -71,11 +89,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  content: {
+  scrollView: {
     flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    paddingBottom: 20,
+  },
+  content: {
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    minHeight: '100%',
   },
   title: {
     fontSize: 28,
@@ -121,6 +146,12 @@ const styles = StyleSheet.create({
   },
   complexButton: {
     backgroundColor: '#FF5722',
+  },
+  safeAreaButton: {
+    backgroundColor: '#673AB7',
+  },
+  documentPickerButton: {
+    backgroundColor: '#795548',
   },
 });
 

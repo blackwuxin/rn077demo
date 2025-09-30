@@ -7,6 +7,7 @@
 
 import React, { useEffect } from 'react';
 import 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigator from './src/navigation/AppNavigator';
 import ErrorHandler from './src/utils/ErrorHandler';
 import ErrorBoundary from './src/components/ErrorBoundary';
@@ -21,9 +22,11 @@ function App(): React.JSX.Element {
   }, []);
 
   return (
-    <ErrorBoundary>
-      <AppNavigator />
-    </ErrorBoundary>
+    <SafeAreaProvider>
+      <ErrorBoundary>
+        <AppNavigator />
+      </ErrorBoundary>
+    </SafeAreaProvider>
   );
 }
 
